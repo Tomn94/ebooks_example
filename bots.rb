@@ -21,7 +21,7 @@ class CloneBot < Ebooks::Bot
     # Configuration for all CloneBots
     self.consumer_key = ""
     self.consumer_secret = ""
-    self.blacklist = ['kylelehk', 'friedrichsays', 'Sudieofna', 'tnietzschequote', 'NerdsOnPeriod', 'FSR', 'BafflingQuotes', 'Obey_Nxme']
+    self.blacklist = []
     self.delay_range = 1..6
     @userinfo = {}
   end
@@ -32,7 +32,7 @@ class CloneBot < Ebooks::Bot
   def on_startup
     load_model!
 
-    scheduler.cron '0 0 * * *' do
+    scheduler.cron '0 10,22 * * *' do #added at noon and set French time zone
       # Each day at midnight, post a single tweet
       tweet(model.make_statement)
     end
@@ -128,9 +128,9 @@ class CloneBot < Ebooks::Bot
   end
 end
 
-CloneBot.new("abby_ebooks") do |bot|
+CloneBot.new("tomn_ebooks") do |bot|
   bot.access_token = ""
   bot.access_token_secret = ""
 
-  bot.original = "0xabad1dea"
+  bot.original = "tomn94"
 end
